@@ -72,7 +72,7 @@
 <body>
     <div class="stage">
         <canvas id="canvas"></canvas>
-        <a class="back-btn" id="backBtn">← back</a>
+        <a class="back-btn" id="backBtn" href="./index.html">← back</a>
         <div class="handle" id="handle">▼</div>
         <div class="side-handle left" id="prevBtn">|</div>
         <div class="side-handle right" id="nextBtn">|</div>
@@ -83,7 +83,8 @@
         const photoNum = parseInt(params.get('photo')) || 1;
         const videoUrl = params.get('url') ? decodeURIComponent(params.get('url')) : null;
 
-        document.getElementById('backBtn').href = 'index.html';
+        // [수정] 점(.)을 찍어서 현재 폴더의 index.html을 찾도록 보강했습니다
+        document.getElementById('backBtn').href = './index.html';
 
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
@@ -150,7 +151,6 @@
             }
         }
 
-        // 캔버스 더블클릭하면 유튜브로 이동
         canvas.addEventListener('dblclick', () => {
             if (videoUrl) window.open(videoUrl, '_blank');
         });
